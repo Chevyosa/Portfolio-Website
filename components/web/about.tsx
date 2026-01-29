@@ -48,7 +48,7 @@ export function About() {
   return (
     <motion.section
       id="about"
-      className="py-20 sm:py-28"
+      className="snap-start py-20 sm:py-28"
       aria-labelledby="about-title"
       {...fadeUp}
     >

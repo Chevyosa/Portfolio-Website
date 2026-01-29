@@ -15,14 +15,18 @@ const fadeUp = {
 
 export function Hero() {
   return (
-    <motion.section id="hero" className="pt-24 pb-20 sm:pt-32" {...fadeUp}>
+    <motion.section
+      id="hero"
+      className="min-h-screen snap-start pt-24 pb-20 sm:pt-32 justify-center  flex flex-col gap-8"
+      {...fadeUp}
+    >
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-4">
           <Badge
             variant="outline"
             className="w-fit border-zinc-200 text-zinc-600"
           >
-            Portfolio 2026
+            Portfolio Website of
           </Badge>
           <h1 className="text-4xl font-semibold tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl">
             Riyanda Azis Febrian
