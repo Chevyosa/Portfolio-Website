@@ -4,7 +4,6 @@ import { Experience } from "@/components/web/experience";
 import { Footer } from "@/components/web/footer";
 import { Hero } from "@/components/web/hero";
 import { Projects } from "@/components/web/projects";
-import { Skills } from "@/components/web/skills";
 
 export default function Home() {
   return (
@@ -12,7 +11,6 @@ export default function Home() {
       <main className="mx-auto flex w-full max-w-6xl flex-col px-6 sm:px-10">
         <Hero />
         <About />
-        <Skills />
         <Projects />
         <Experience />
         <Contact />
