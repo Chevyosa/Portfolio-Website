@@ -17,7 +17,7 @@ export function Hero() {
   return (
     <motion.section
       id="hero"
-      className="min-h-screen snap-start pt-24 pb-20 sm:pt-32 justify-center  flex flex-col gap-8"
+      className="min-h-screen snap-start justify-center  flex flex-col gap-8"
       {...fadeUp}
     >
       <div className="flex flex-col gap-8">
