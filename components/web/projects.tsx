@@ -1,23 +1,23 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
   viewport: { once: true, amount: 0.3 },
-}
+};
 
 const projects = [
   {
@@ -41,7 +41,7 @@ const projects = [
     tags: ["Framer Motion", "Figma", "Vercel"],
     link: "https://example.com",
   },
-]
+];
 
 export function Projects() {
   return (
@@ -60,7 +60,7 @@ export function Projects() {
             id="projects-title"
             className="text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl"
           >
-            Apple-style cards with a focus on outcomes.
+            A curated selection of recent work.
           </h2>
         </div>
         <div className="grid gap-6 lg:grid-cols-3">
@@ -73,9 +73,7 @@ export function Projects() {
                 <CardTitle className="text-xl font-semibold text-zinc-900">
                   {project.title}
                 </CardTitle>
-                <p className="text-sm text-zinc-500">
-                  {project.description}
-                </p>
+                <p className="text-sm text-zinc-500">{project.description}</p>
               </CardHeader>
               <CardContent className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
@@ -94,7 +92,13 @@ export function Projects() {
             </Card>
           ))}
         </div>
+
+        <div className="flex justify-center">
+          <Button asChild size="lg">
+            <a href="/projects">View All Projects</a>
+          </Button>
+        </div>
       </div>
     </motion.section>
-  )
+  );
 }

@@ -9,8 +9,8 @@ import { Projects } from "@/components/web/projects";
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-zinc-900">
-      <main className="mx-auto flex w-full max-w-6xl flex-col px-6 sm:px-10">
-        <Navbar />
+      <Navbar />
+      <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 sm:px-10">
         <Hero />
         <About />
         <Projects />
