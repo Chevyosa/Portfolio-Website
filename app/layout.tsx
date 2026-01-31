@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
+import AnimatedLines from "@/components/animated-lines";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -45,7 +48,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased scroll-smooth snap-y snap-mandatory`}
       >
-        {children}
+        <div className="relative min-h-screen">
+          <AnimatedLines />
+          <div className="relative z-10">{children}</div>
+        </div>
       </body>
     </html>
   );

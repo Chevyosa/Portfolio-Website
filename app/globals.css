@@ -123,3 +123,40 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes floatLine {
+  0% {
+    transform: translateY(0px);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 0.15;
+  }
+}
+
+.line {
+  stroke: rgba(0, 0, 0, 0.25);
+  stroke-width: 1;
+  animation: floatLine 14s ease-in-out infinite;
+}
+
+.dark .line {
+  stroke: rgba(255, 255, 255, 0.25);
+}
+
+.delay-1 {
+  animation-delay: 2s;
+}
+
+.delay-2 {
+  animation-delay: 4s;
+}
+
+.delay-3 {
+  animation-delay: 6s;
+}

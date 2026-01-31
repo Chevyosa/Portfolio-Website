@@ -1,13 +1,13 @@
 import Link from "next/link";
 
-import { Navbar } from "@/components/web/navbar";
+import { ClientNavbar } from "@/components/web/client-navbar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen bg-white text-zinc-900">
-      <Navbar />
+    <div className="min-h-screen bg-transparent text-zinc-900">
+      <ClientNavbar />
       <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-16 sm:px-10">
         <section className="flex flex-col gap-4">
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-zinc-500">
