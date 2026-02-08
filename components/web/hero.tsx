@@ -3,9 +3,10 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+
+import HeroImage from "@/assets/images/hero-profile.png";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -43,13 +44,13 @@ export function Hero() {
       {/* Main Content */}
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12 items-center">
         {/* Left: Image */}
-        <div className="flex justify-center lg:justify-start order-2 lg:order-1">
+        <div className="flex justify-center lg:justify-center order-2 lg:order-1">
           <div className="relative w-80 h-96">
             <Image
-              src="/images/hero-profile.jpg"
+              src={HeroImage}
               alt="Profile"
               fill
-              className="object-cover rounded-2xl"
+              className="object-contain rounded-2xl"
               priority
             />
             <div className="absolute bottom-0 left-0 right-0 h-1 bg-zinc-900 rounded-full" />
