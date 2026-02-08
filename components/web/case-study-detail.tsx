@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Github } from "lucide-react";
 import { CaseStudy } from "@/lib/projects-data";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -189,6 +190,40 @@ export function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
                 >
                   Visit Project →
                 </a>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Repository Link - Only show if not confidential */}
+          {!caseStudy.confidential && caseStudy.repository && (
+            <Card className="rounded-2xl border-zinc-200/70 bg-white/80">
+              <CardContent>
+                <a
+                  href={caseStudy.repository}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 w-full px-4 py-2 text-sm font-medium text-zinc-900 bg-zinc-50 border border-zinc-200/70 rounded-lg hover:bg-zinc-100 transition-colors"
+                >
+                  <Github className="h-4 w-4" />
+                  View on GitHub
+                </a>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Confidential Badge - Show if confidential */}
+          {caseStudy.confidential && (
+            <Card className="rounded-2xl border-amber-200/70 bg-amber-50">
+              <CardContent className="pt-6">
+                <div className="flex items-center gap-2 text-amber-900">
+                  <span className="text-lg">🔒</span>
+                  <div>
+                    <p className="text-sm font-medium">Confidential Project</p>
+                    <p className="text-xs text-amber-800 mt-1">
+                      Repository and source code are not publicly available.
+                    </p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           )}

@@ -42,7 +42,7 @@ export function Projects() {
           </h2>
         </div>
         <div className="grid gap-6 lg:grid-cols-3">
-          {caseStudies.map((project) => (
+          {caseStudies.slice(0, 3).map((project) => (
             <Card
               key={project.id}
               className="group rounded-3xl border-zinc-200/70 bg-white/90 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"

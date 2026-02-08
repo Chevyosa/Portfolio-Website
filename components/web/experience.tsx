@@ -11,23 +11,25 @@ const fadeUp = {
 
 const experiences = [
   {
-    role: "Senior Frontend Engineer",
-    company: "Lumina Labs",
-    period: "2024 — Present",
+    role: "Technical Mobile Mentor",
+    company: "Infinite Learning",
+    period: "October 2025 — Present",
     impact:
-      "Led the redesign of the flagship web app, improving conversion by 28%.",
+      "Mentoring on mobile app architecture, guiding 60+ mentees through Flutter projects.",
   },
   {
-    role: "Mobile Engineer",
-    company: "Helios Studio",
-    period: "2022 — 2024",
-    impact: "Built cross-platform experiences with a 4.8★ app rating.",
+    role: "Technical Web Mentor",
+    company: "Infinite Learning",
+    period: "August 2025 - September 2025",
+    impact:
+      "Conducted technical workshops on modern web development, helping teams improve code quality and delivery speed.",
   },
   {
-    role: "Product Designer",
-    company: "Solace Ventures",
-    period: "2020 — 2022",
-    impact: "Shipped a design system adopted across five product teams.",
+    role: "Mobile Developer Intern",
+    company: "Infinite Learning",
+    period: "September 2024 — December 2024",
+    impact:
+      "Built responsive mobile applications with Jetpack Compose, delivering features used by 20+ users on Android devices.",
   },
 ];
 

@@ -18,7 +18,7 @@ const fadeUp = {
 const specialties = [
   {
     title: "Mobile Development",
-    description: "Flutter & Jetpack Compose native experiences",
+    description: "Flutter, Jetpack Compose, and iOS native experiences",
   },
   {
     title: "Web Development",

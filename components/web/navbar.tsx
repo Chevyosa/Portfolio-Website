@@ -35,7 +35,7 @@ export function Navbar() {
           href="/"
           className="text-sm font-semibold tracking-[0.16em] text-zinc-900"
         >
-          RIYANDA AZIS FEBRIAN
+          PORTFOLIO OF RIYANDA
         </Link>
         <nav className="hidden items-center gap-6 md:flex">
           {menuItems.map((item) => (

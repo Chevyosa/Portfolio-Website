@@ -65,7 +65,7 @@ export default function ProjectsPage() {
           {/* Statistics Section */}
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
             <Card className="rounded-2xl border-zinc-200/70 bg-white/50">
-              <CardContent className="pt-6 text-center">
+              <CardContent className=" text-center">
                 <div className="text-3xl font-semibold text-zinc-900">
                   {caseStudies.length}
                 </div>
@@ -73,7 +73,7 @@ export default function ProjectsPage() {
               </CardContent>
             </Card>
             <Card className="rounded-2xl border-zinc-200/70 bg-white/50">
-              <CardContent className="pt-6 text-center">
+              <CardContent className=" text-center">
                 <div className="text-3xl font-semibold text-zinc-900">
                   {new Set(caseStudies.flatMap((p) => p.technologies)).size}+
                 </div>
@@ -81,7 +81,7 @@ export default function ProjectsPage() {
               </CardContent>
             </Card>
             <Card className="rounded-2xl border-zinc-200/70 bg-white/50">
-              <CardContent className="pt-6 text-center">
+              <CardContent className=" text-center">
                 <div className="text-3xl font-semibold text-zinc-900">
                   {Math.max(...caseStudies.map((p) => p.year))}
                 </div>
