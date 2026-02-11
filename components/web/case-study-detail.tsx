@@ -1,0 +1,294 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Github, X } from "lucide-react";
+import { CaseStudy } from "@/lib/projects-data";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+
+const fadeUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+  viewport: { once: true, amount: 0.3 },
+};
+
+interface CaseStudyDetailProps {
+  caseStudy: CaseStudy;
+}
+
+export function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string>("");
+
+  const openLightbox = (imageSrc: string) => {
+    setSelectedImage(imageSrc);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    setSelectedImage("");
+  };
+
+  return (
+    <>
+      <article className="w-full">
+        {/* Hero Section */}
+        <motion.section
+          className="relative w-full mb-12 sm:mb-16 overflow-hidden rounded-3xl bg-zinc-100 cursor-pointer hover:opacity-90 transition-opacity"
+          onClick={() => openLightbox(caseStudy.images.hero)}
+          {...fadeUp}
+        >
+          <div className="relative w-full h-96 sm:h-125">
+            <Image
+              src={caseStudy.images.hero}
+              alt={caseStudy.title}
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+        </motion.section>
+
+        {/* Header */}
+        <motion.div className="flex flex-col gap-4 mb-12" {...fadeUp}>
+          <div className="flex flex-wrap gap-2">
+            {caseStudy.tags.map((tag) => (
+              <Badge key={tag} variant="outline" className="text-zinc-600">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight text-zinc-950">
+            {caseStudy.title}
+          </h1>
+          <p className="text-xl text-zinc-600 max-w-2xl">
+            {caseStudy.subtitle}
+          </p>
+        </motion.div>
+
+        <Separator className="mb-12" />
+
+        {/* Main Content Grid */}
+        <div className="grid gap-12 lg:grid-cols-3">
+          {/* Left Column - Main Content */}
+          <motion.div
+            className="lg:col-span-2 flex flex-col gap-12"
+            {...fadeUp}
+          >
+            {/* Challenge Section */}
+            <div className="flex flex-col gap-4">
+              <h2 className="text-2xl font-semibold tracking-tight text-zinc-950">
+                Challenge
+              </h2>
+              <p className="text-base leading-relaxed text-zinc-600">
+                {caseStudy.challenge}
+              </p>
+            </div>
+
+            {/* Solution Section */}
+            <div className="flex flex-col gap-4">
+              <h2 className="text-2xl font-semibold tracking-tight text-zinc-950">
+                Solution
+              </h2>
+              <p className="text-base leading-relaxed text-zinc-600">
+                {caseStudy.solution}
+              </p>
+            </div>
+
+            {/* Results Section */}
+            <div className="flex flex-col gap-4">
+              <h2 className="text-2xl font-semibold tracking-tight text-zinc-950">
+                Results
+              </h2>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {caseStudy.results.map((result, idx) => (
+                  <Card
+                    key={idx}
+                    className="rounded-2xl border-zinc-200/70 bg-white/50"
+                  >
+                    <CardContent className="pt-6">
+                      <p className="text-sm leading-relaxed text-zinc-600">
+                        {result}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            {/* Gallery Section */}
+            {caseStudy.images.gallery.length > 0 && (
+              <div className="flex flex-col gap-4">
+                <h2 className="text-2xl font-semibold tracking-tight text-zinc-950">
+                  Gallery
+                </h2>
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
+                  {caseStudy.images.gallery.map((image, idx) => (
+                    <motion.div
+                      key={idx}
+                      className="relative h-64 sm:h-80 overflow-hidden rounded-2xl cursor-pointer hover:opacity-80 transition-opacity"
+                      onClick={() => openLightbox(image)}
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Image
+                        src={image}
+                        alt={`Gallery ${idx + 1}`}
+                        fill
+                        className="object-cover"
+                      />
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </motion.div>
+
+          {/* Right Column - Info Cards */}
+          <motion.div className="flex flex-col gap-6" {...fadeUp}>
+            {/* Project Info */}
+            <Card className="rounded-2xl border-zinc-200/70 bg-white/80">
+              <CardHeader>
+                <CardTitle className="text-lg font-semibold">
+                  Project Details
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-4">
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+                    Completed
+                  </p>
+                  <p className="text-sm font-medium text-zinc-900 mt-1">
+                    {caseStudy.year}
+                  </p>
+                </div>
+                <Separator />
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+                    Description
+                  </p>
+                  <p className="text-sm text-zinc-600 mt-2">
+                    {caseStudy.description}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Technologies */}
+            <Card className="rounded-2xl border-zinc-200/70 bg-white/80">
+              <CardHeader>
+                <CardTitle className="text-lg font-semibold">
+                  Technologies
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {caseStudy.technologies.map((tech) => (
+                    <Badge
+                      key={tech}
+                      variant="outline"
+                      className="text-zinc-600 text-xs"
+                    >
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Project Link */}
+            {caseStudy.link && (
+              <Card className="rounded-2xl border-zinc-200/70 bg-white/80">
+                <CardContent className="pt-6">
+                  <a
+                    href={caseStudy.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-zinc-900 border border-zinc-200/70 rounded-lg hover:bg-zinc-50 transition-colors"
+                  >
+                    Visit Project →
+                  </a>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Repository Link - Only show if not confidential */}
+            {!caseStudy.confidential && caseStudy.repository && (
+              <Card className="rounded-2xl border-zinc-200/70 bg-white/80">
+                <CardContent>
+                  <a
+                    href={caseStudy.repository}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center gap-2 w-full px-4 py-2 text-sm font-medium text-zinc-900 bg-zinc-50 border border-zinc-200/70 rounded-lg hover:bg-zinc-100 transition-colors"
+                  >
+                    <Github className="h-4 w-4" />
+                    View on GitHub
+                  </a>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Confidential Badge - Show if confidential */}
+            {caseStudy.confidential && (
+              <Card className="rounded-2xl border-amber-200/70 bg-amber-50">
+                <CardContent>
+                  <div className="flex items-center gap-2 text-amber-900">
+                    <span className="text-lg">🔒</span>
+                    <div>
+                      <p className="text-sm font-medium">
+                        Confidential Project
+                      </p>
+                      <p className="text-xs text-amber-800 mt-1">
+                        Repository and source code are not publicly available.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </motion.div>
+        </div>
+      </article>
+
+      {/* Lightbox Modal */}
+      {lightboxOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+          onClick={closeLightbox}
+        >
+          <button
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 p-2 text-white hover:bg-white/20 rounded-full transition-colors z-51"
+          >
+            <X className="h-6 w-6" />
+          </button>
+
+          <motion.div
+            className="relative w-full h-full max-w-4xl max-h-[90vh] p-4"
+            onClick={(e) => e.stopPropagation()}
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="relative w-full h-full">
+              <Image
+                src={selectedImage}
+                alt="Fullscreen view"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </>
+  );
+}
