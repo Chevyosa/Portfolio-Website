@@ -86,7 +86,7 @@ export const caseStudies: CaseStudy[] = [
     description:
       "A modern and mobile-friendly project management tool designed to enhance team collaboration and productivity.",
     tags: ["Flutter", "Dart", "Firebase"],
-    repository: "https://github.com/yourusername/writeit-app",
+    repository: "https://github.com/Chevyosa/Writeit-App.git",
     confidential: false,
     challenge:
       "Create a lightweight project management solution that enables teams to collaborate effectively on mobile devices. The key challenge was balancing feature richness with mobile usability while ensuring real-time data consistency.",
@@ -116,7 +116,7 @@ export const caseStudies: CaseStudy[] = [
       "A mobile application for managing vehicle safety inspections in Elnusa Petrofin, ensuring compliance and operational efficiency.",
     tags: ["Flutter", "Dart", "Express", "Javascript", "MySQL"],
     confidential: false,
-    repository: "https://github.com/yourusername/writeit-app",
+    repository: "https://github.com/Chevyosa/petrosafe_app.git",
     challenge:
       "Develop a comprehensive vehicle safety inspection system for Elnusa Petrofin that streamlines compliance checks and reduces manual paperwork. The challenge was creating a mobile-first solution that mechanics can use in the field with offline capability.",
     solution:
@@ -141,7 +141,7 @@ export const caseStudies: CaseStudy[] = [
     description:
       "A mobile application that detects drowsiness in drivers using Camera and Machine Learning to enhance road safety.",
     tags: ["Flutter", "Dart", "FlaskAPI", "Python"],
-    repository: "https://github.com/yourusername/writeit-app",
+    repository: "https://github.com/Chevyosa/sleepy_app.git",
     challenge:
       "Build a real-time driver monitoring system that detects drowsiness using camera-based ML models to prevent accidents and improve road safety. The challenge was implementing accurate facial landmark detection and drowsiness recognition with minimal latency.",
     solution:
@@ -210,7 +210,7 @@ export const caseStudies: CaseStudy[] = [
     description:
       "A website for recommending laptops based on user needs using Natural Language Processing (NLP) and Multi-Layer Perceptron (MLP) algorithms.",
     tags: ["ReactJS", "Express", "MySQL", "Javascript", "Python", "FlaskAPI"],
-    repository: "https://github.com/yourusername/writeit-app",
+    repository: "https://github.com/Chevyosa/web-asklaptop-vercel.git",
     challenge:
       "Build an intelligent laptop recommendation system that understands user needs through natural language input. The challenge was combining NLP to parse user requirements with ML algorithms to provide accurate, personalized laptop suggestions.",
     solution:
