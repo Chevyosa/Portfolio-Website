@@ -56,7 +56,7 @@ export function Experience() {
         <div className="space-y-8 border-l border-zinc-200 pl-6">
           {experiences.map((item) => (
             <div key={item.company} className="relative">
-              <div className="absolute -left-[11px] top-1.5 h-2.5 w-2.5 rounded-full bg-zinc-900" />
+              <div className="absolute -left-2.75 top-1.5 h-2.5 w-2.5 rounded-full bg-zinc-900" />
               <div className="flex flex-col gap-2">
                 <div className="flex flex-wrap items-center gap-3">
                   <h3 className="text-lg font-semibold text-zinc-900">
