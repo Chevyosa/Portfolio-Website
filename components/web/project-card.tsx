@@ -16,7 +16,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     <Link href={`/projects/${project.slug}`} className="group">
       <Card className="rounded-3xl border-zinc-200/70 bg-white/90 shadow-sm transition-all duration-300 overflow-hidden h-full hover:-translate-y-1 hover:shadow-lg">
         {/* Project Image */}
-        <div className="relative h-48 w-full overflow-hidden bg-zinc-100">
+        <div className="relative aspect-video w-full overflow-hidden bg-zinc-100">
           <Image
             src={project.images.hero}
             alt={project.title}
