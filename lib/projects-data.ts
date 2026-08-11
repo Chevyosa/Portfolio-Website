@@ -21,6 +21,35 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
+    id: "11",
+    slug: "infinite-learning-lms-v2",
+    title: "Infinite Learning LMS v2",
+    subtitle: "Modern Learning Management System for Infinite Learning",
+    description:
+      "A recreation of the original LMS to replace Moodle, improving mentor's ease in managing assessments, logbooks, and mentee attendances connected to transcripts and certificates.",
+    tags: ["NextJS", "NestJS", "PostgreSQL", "Custom Design System"],
+    confidential: true,
+    challenge:
+      "Recreate the previous Moodle-based LMS to streamline administrative tasks for mentors and improve the overall learning experience.",
+    solution:
+      "Developed a modern web application using NextJS for the frontend and NestJS with PostgreSQL for the backend. The system automates repetitive administrative tasks, such as assessment management, logbook tracking, and attendance monitoring, which are directly connected to transcripts and certificates.",
+    results: [
+      "Improved mentor efficiency in managing assessments and logbooks",
+      "Automated mentee attendance tracking connected to transcripts and certificates",
+      "Streamlined repetitive administrative tasks",
+    ],
+    technologies: ["NextJS", "NestJS", "PostgreSQL", "Typescript"],
+    images: {
+      hero: "/images/projects/thumbnail-lms.png",
+      gallery: [
+        "/images/projects/lms-1.png",
+        "/images/projects/lms-2.png",
+        "/images/projects/infinitelearninglms.png"
+      ],
+    },
+    year: 2026,
+  },
+  {
     id: "1",
     slug: "habit-tracker",
     title: "HabitTracker App",

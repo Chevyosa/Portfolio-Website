@@ -38,15 +38,15 @@ export function Contact() {
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">
-              <a href="mailto:riyanda@example.com">Email Me</a>
+              <a href="mailto:febriyann.personal@gmail.com">Email Me</a>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">
+              <a href="https://www.linkedin.com/in/riyanda-azis-febrian" target="_blank" rel="noreferrer">
                 LinkedIn
               </a>
             </Button>
             <Button asChild size="lg" variant="ghost">
-              <a href="https://github.com" target="_blank" rel="noreferrer">
+              <a href="https://github.com/Chevyosa" target="_blank" rel="noreferrer">
                 GitHub
               </a>
             </Button>

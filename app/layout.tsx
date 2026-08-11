@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://febriyann.my.id"),
   title: "Riyanda Azis Febrian — Full-Stack Developer",
   description:
     "Portfolio of Riyanda Azis Febrian, a Full-Stack Developer & Mobile Engineer specializing in modern web and mobile applications.",
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
     "Flutter",
     "React",
     "Portfolio",
+    "Full Stack Developer Batam"
   ],
   authors: [{ name: "Riyanda Azis Febrian" }],
   creator: "Riyanda Azis Febrian",

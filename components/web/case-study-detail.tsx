@@ -121,32 +121,6 @@ export function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
               </div>
             </div>
 
-            {/* Gallery Section */}
-            {caseStudy.images.gallery.length > 0 && (
-              <div className="flex flex-col gap-4">
-                <h2 className="text-2xl font-semibold tracking-tight text-zinc-950">
-                  Gallery
-                </h2>
-                <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
-                  {caseStudy.images.gallery.map((image, idx) => (
-                    <motion.div
-                      key={idx}
-                      className="relative h-64 sm:h-80 overflow-hidden rounded-2xl cursor-pointer hover:opacity-80 transition-opacity"
-                      onClick={() => openLightbox(image)}
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <Image
-                        src={image}
-                        alt={`Gallery ${idx + 1}`}
-                        fill
-                        className="object-cover"
-                      />
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            )}
           </motion.div>
 
           {/* Right Column - Info Cards */}
@@ -254,6 +228,34 @@ export function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
             )}
           </motion.div>
         </div>
+
+        {/* Gallery Section - Full Width */}
+        {caseStudy.images.gallery.length > 0 && (
+          <motion.div className="mt-16 flex flex-col gap-6" {...fadeUp}>
+            <Separator className="mb-4" />
+            <h2 className="text-3xl font-semibold tracking-tight text-zinc-950">
+              Project Gallery
+            </h2>
+            <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
+              {caseStudy.images.gallery.map((image, idx) => (
+                <motion.div
+                  key={idx}
+                  className="relative h-64 sm:h-80 overflow-hidden rounded-2xl cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => openLightbox(image)}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Image
+                    src={image}
+                    alt={`Gallery ${idx + 1}`}
+                    fill
+                    className="object-cover"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
       </article>
 
       {/* Lightbox Modal */}
