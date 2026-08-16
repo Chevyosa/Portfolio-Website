@@ -5,15 +5,21 @@ import { Footer } from "@/components/web/footer";
 import { Hero } from "@/components/web/hero";
 import { ClientNavbar } from "@/components/web/client-navbar";
 import { Projects } from "@/components/web/projects";
+import { getPublishedProjects, getSkills } from "@/lib/projects-api";
 
-export default function Home() {
+export default async function Home() {
+  const [projects, skills] = await Promise.all([
+    getPublishedProjects(),
+    getSkills(),
+  ]);
+
   return (
     <div className="min-h-screen bg-transparent text-zinc-900">
       <ClientNavbar />
       <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 sm:px-10">
         <Hero />
-        <About />
-        <Projects />
+        <About skills={skills} />
+        <Projects projects={projects} />
         <Experience />
         <Contact />
       </main>

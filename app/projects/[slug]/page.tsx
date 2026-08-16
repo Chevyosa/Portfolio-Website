@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { ClientNavbar } from "@/components/web/client-navbar";
 import { Footer } from "@/components/web/footer";
 import { CaseStudyDetail } from "@/components/web/case-study-detail";
-import { getCaseStudyBySlug, getAllCaseStudySlugs } from "@/lib/projects-data";
+import { getPublishedProjectBySlug } from "@/lib/projects-api";
 
 interface CaseStudyPageProps {
   params: Promise<{
@@ -11,18 +11,11 @@ interface CaseStudyPageProps {
   }>;
 }
 
-export async function generateStaticParams() {
-  const slugs = getAllCaseStudySlugs();
-  return slugs.map((slug) => ({
-    slug,
-  }));
-}
-
 export async function generateMetadata({
   params,
 }: CaseStudyPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const caseStudy = getCaseStudyBySlug(slug);
+  const caseStudy = await getPublishedProjectBySlug(slug);
 
   if (!caseStudy) {
     return {
@@ -53,7 +46,7 @@ export async function generateMetadata({
 
 export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   const { slug } = await params;
-  const caseStudy = getCaseStudyBySlug(slug);
+  const caseStudy = await getPublishedProjectBySlug(slug);
 
   if (!caseStudy) {
     notFound();

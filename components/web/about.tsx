@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { SkillIcon } from "@/components/web/skill-icon";
+import { Skill } from "@/lib/skills";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -13,38 +14,7 @@ const fadeUp = {
   viewport: { once: true, amount: 0.3 },
 };
 
-const skills = [
-  {
-    name: "Next.js",
-    src: "https://cdn.simpleicons.org/nextdotjs/111111",
-  },
-  {
-    name: "React",
-    src: "https://cdn.simpleicons.org/react/111111",
-  },
-  {
-    name: "TypeScript",
-    src: "https://cdn.simpleicons.org/typescript/111111",
-  },
-  {
-    name: "Tailwind CSS",
-    src: "https://cdn.simpleicons.org/tailwindcss/111111",
-  },
-  {
-    name: "Framer Motion",
-    src: "https://cdn.simpleicons.org/framer/111111",
-  },
-  {
-    name: "Node.js",
-    src: "https://cdn.simpleicons.org/nodedotjs/111111",
-  },
-  {
-    name: "Flutter",
-    src: "https://cdn.simpleicons.org/flutter/111111",
-  },
-];
-
-export function About() {
+export function About({ skills }: { skills: Skill[] }) {
   return (
     <motion.section
       id="about"
@@ -85,17 +55,10 @@ export function About() {
             <div className="grid grid-cols-4 gap-4 sm:grid-cols-5">
               {skills.map((skill) => (
                 <div
-                  key={skill.name}
+                  key={skill.id}
                   className="flex flex-col items-center gap-2 rounded-2xl border border-zinc-200/70 bg-white/70 px-3 py-4 text-center"
                 >
-                  <Image
-                    src={skill.src}
-                    alt={skill.name}
-                    width={28}
-                    height={28}
-                    className="h-7 w-7 object-contain"
-                    unoptimized
-                  />
+                  <SkillIcon name={skill.name} icon={skill.icon} />
                   <span className="text-xs font-medium text-zinc-600">
                     {skill.name}
                   </span>
