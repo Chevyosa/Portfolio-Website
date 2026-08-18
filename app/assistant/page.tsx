@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function AssistantPage() {
   return (
-    <div className="flex h-screen flex-col overflow-hidden bg-white text-zinc-900">
+    <div className="flex h-dvh flex-col overflow-hidden bg-white text-zinc-900">
       <ClientNavbar />
       <main className="mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col px-6 py-6 sm:px-10">
         {/* <section className="mb-5 flex flex-col gap-3">

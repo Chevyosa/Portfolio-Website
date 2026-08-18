@@ -207,8 +207,7 @@ export function ChatPanel() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              style={{ maxWidth: "24rem", width: "fit-content" }}
-              className={`rounded-2xl px-4 py-2 text-sm leading-relaxed ${m.role === "user" ? "bg-zinc-900 text-white" : "bg-zinc-100 text-zinc-800"
+              className={`w-fit max-w-[80%] rounded-2xl px-4 py-2 text-sm leading-relaxed sm:max-w-sm ${m.role === "user" ? "bg-zinc-900 text-white" : "bg-zinc-100 text-zinc-800"
                 }`}
             >
               {m.role === "assistant" ? (
