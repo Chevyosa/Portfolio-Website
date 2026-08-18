@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Not Found",
@@ -13,12 +14,12 @@ export default function NotFound() {
         <p className="text-lg text-zinc-600 mb-8">
           Case study not found. Please check the URL and try again.
         </p>
-        <a
+        <Link
           href="/projects"
           className="inline-flex items-center justify-center px-6 py-2 text-sm font-medium text-zinc-900 border border-zinc-200 rounded-lg hover:bg-zinc-50 transition-colors"
         >
           Back to Projects
-        </a>
+        </Link>
       </div>
     </div>
   );

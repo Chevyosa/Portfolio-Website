@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { SkillIcon } from "@/components/web/skill-icon";
+import { Skill } from "@/lib/skills";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -13,38 +14,46 @@ const fadeUp = {
   viewport: { once: true, amount: 0.3 },
 };
 
-const skills = [
-  {
-    name: "Next.js",
-    src: "https://cdn.simpleicons.org/nextdotjs/111111",
-  },
-  {
-    name: "React",
-    src: "https://cdn.simpleicons.org/react/111111",
-  },
-  {
-    name: "TypeScript",
-    src: "https://cdn.simpleicons.org/typescript/111111",
-  },
-  {
-    name: "Tailwind CSS",
-    src: "https://cdn.simpleicons.org/tailwindcss/111111",
-  },
-  {
-    name: "Framer Motion",
-    src: "https://cdn.simpleicons.org/framer/111111",
-  },
-  {
-    name: "Node.js",
-    src: "https://cdn.simpleicons.org/nodedotjs/111111",
-  },
-  {
-    name: "Flutter",
-    src: "https://cdn.simpleicons.org/flutter/111111",
-  },
-];
+function MarqueeRow({
+  items,
+  direction,
+}: {
+  items: Skill[];
+  direction: "right" | "left";
+}) {
+  const duplicated = [...items, ...items];
+  const x = direction === "left" ? ["0%", "-50%"] : ["-50%", "0%"];
 
-export function About() {
+  return (
+    <div className="overflow-hidden">
+      <motion.div
+        className="flex w-max gap-3"
+        animate={{ x }}
+        transition={{
+          duration: items.length * 2.5,
+          ease: "linear",
+          repeat: Infinity,
+        }}
+      >
+        {duplicated.map((skill, i) => (
+          <div
+            key={`${skill.id}-${i}`}
+            className="flex shrink-0 items-center gap-2 rounded-xl border border-zinc-200/70 bg-white/70 px-3 py-2"
+          >
+            <SkillIcon name={skill.name} icon={skill.icon} />
+            <span className="whitespace-nowrap text-xs font-medium text-zinc-600">
+              {skill.name}
+            </span>
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
+export function About({ skills }: { skills: Skill[] }) {
+  const half = Math.floor(skills.length / 2);
+  const row2 = [...skills.slice(half), ...skills.slice(0, half)];
   return (
     <motion.section
       id="about"
@@ -72,7 +81,7 @@ export function About() {
             performance, and delightful interactions that feel effortless.
           </p>
         </div>
-        <Card className="rounded-3xl border-zinc-200/70 bg-white/80 shadow-sm">
+        <Card className="rounded-3xl border-zinc-200/70 bg-white/80 shadow-sm max-w-lg">
           <CardHeader className="gap-3">
             <CardTitle className="text-xl font-semibold text-zinc-900">
               Core Stack
@@ -81,27 +90,15 @@ export function About() {
               Focused tools for premium, high-performance builds.
             </p>
           </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-4 gap-4 sm:grid-cols-5">
-              {skills.map((skill) => (
-                <div
-                  key={skill.name}
-                  className="flex flex-col items-center gap-2 rounded-2xl border border-zinc-200/70 bg-white/70 px-3 py-4 text-center"
-                >
-                  <Image
-                    src={skill.src}
-                    alt={skill.name}
-                    width={28}
-                    height={28}
-                    className="h-7 w-7 object-contain"
-                    unoptimized
-                  />
-                  <span className="text-xs font-medium text-zinc-600">
-                    {skill.name}
-                  </span>
-                </div>
-              ))}
-            </div>
+          <CardContent className="flex flex-col gap-4">
+            {skills.length > 0 ? (
+              <>
+                <MarqueeRow items={skills} direction="right" />
+                <MarqueeRow items={row2} direction="left" />
+              </>
+            ) : (
+              <p className="text-sm text-zinc-500">No skills yet.</p>
+            )}
           </CardContent>
         </Card>
       </div>

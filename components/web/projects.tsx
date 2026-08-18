@@ -12,7 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { caseStudies } from "@/lib/projects-data";
+import { CaseStudy } from "@/lib/projects-data";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -21,7 +21,7 @@ const fadeUp = {
   viewport: { once: true, amount: 0.3 },
 };
 
-export function Projects() {
+export function Projects({ projects }: { projects: CaseStudy[] }) {
   return (
     <motion.section
       id="projects"
@@ -42,7 +42,7 @@ export function Projects() {
           </h2>
         </div>
         <div className="grid gap-6 lg:grid-cols-3">
-          {caseStudies.slice(0, 3).map((project) => (
+          {projects.slice(0, 3).map((project) => (
             <Card
               key={project.id}
               className="group rounded-3xl border-zinc-200/70 bg-white/90 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
@@ -73,7 +73,7 @@ export function Projects() {
 
         <div className="flex justify-center">
           <Button asChild size="lg">
-            <a href="/projects">View All Projects</a>
+            <Link href="/projects">View All Projects</Link>
           </Button>
         </div>
       </div>

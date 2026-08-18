@@ -7,7 +7,7 @@ import { ProjectCard } from "@/components/web/project-card";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { caseStudies } from "@/lib/projects-data";
+import { getPublishedProjects } from "@/lib/projects-api";
 
 export const metadata: Metadata = {
   title: "Projects - Case Studies",
@@ -23,7 +23,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const projects = await getPublishedProjects();
+
   return (
     <div className="min-h-screen bg-white text-zinc-900 flex flex-col">
       <ClientNavbar />
@@ -57,7 +59,7 @@ export default function ProjectsPage() {
         {/* Projects Grid */}
         <section className="flex flex-col gap-12">
           <div className="grid gap-8 md:grid-cols-2">
-            {caseStudies.map((project) => (
+            {projects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>
@@ -67,7 +69,7 @@ export default function ProjectsPage() {
             <Card className="rounded-2xl border-zinc-200/70 bg-white/50">
               <CardContent className=" text-center">
                 <div className="text-3xl font-semibold text-zinc-900">
-                  {caseStudies.length}
+                  {projects.length}
                 </div>
                 <p className="text-sm text-zinc-600 mt-2">Completed Projects</p>
               </CardContent>
@@ -75,7 +77,7 @@ export default function ProjectsPage() {
             <Card className="rounded-2xl border-zinc-200/70 bg-white/50">
               <CardContent className=" text-center">
                 <div className="text-3xl font-semibold text-zinc-900">
-                  {new Set(caseStudies.flatMap((p) => p.technologies)).size}+
+                  {new Set(projects.flatMap((p) => p.technologies)).size}+
                 </div>
                 <p className="text-sm text-zinc-600 mt-2">Technologies Used</p>
               </CardContent>
@@ -83,7 +85,7 @@ export default function ProjectsPage() {
             <Card className="rounded-2xl border-zinc-200/70 bg-white/50">
               <CardContent className=" text-center">
                 <div className="text-3xl font-semibold text-zinc-900">
-                  {Math.max(...caseStudies.map((p) => p.year))}
+                  {Math.max(...projects.map((p) => p.year))}
                 </div>
                 <p className="text-sm text-zinc-600 mt-2">Latest Year</p>
               </CardContent>
