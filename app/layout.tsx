@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 
 import AnimatedLines from "@/components/animated-lines";
 
@@ -54,6 +55,14 @@ export default function RootLayout({
           <AnimatedLines />
           <div className="relative z-10">{children}</div>
         </div>
+        {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID ? (
+          <Script
+            async
+            src={`${process.env.NEXT_PUBLIC_UMAMI_URL || "https://umami.febriyann.my.id"}/script.js`}
+            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+            strategy="afterInteractive"
+          />
+        ) : null}
       </body>
     </html>
   );

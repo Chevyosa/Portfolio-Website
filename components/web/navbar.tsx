@@ -15,6 +15,7 @@ import {
 const menuItems = [
   { label: "Home", href: "/" },
   { label: "Projects", href: "/projects" },
+  { label: "Chat with AI", href: "/assistant" },
   { label: "Contact", href: "/#contact" },
 ];
 
@@ -42,11 +43,10 @@ export function Navbar() {
             <Link
               key={item.label}
               href={item.href}
-              className={`text-sm transition-colors ${
-                isActive(item.href)
+              className={`text-sm transition-colors ${isActive(item.href)
                   ? "font-medium text-zinc-900"
                   : "text-zinc-600 hover:text-zinc-900"
-              }`}
+                }`}
             >
               {item.label}
             </Link>
